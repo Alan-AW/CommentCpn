@@ -20,7 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'comment.apps.AppConfig',
+    'comment.apps.CommentConfig',
+    'model.apps.ModelConfig',
 ]
 
 MIDDLEWARE = [
@@ -60,9 +61,9 @@ WSGI_APPLICATION = 'CommentCpn.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': 'comment',
+        'USER': 'root',
+        'PASSWORD': 'xcdh560',
         'HOST': '127.0.0.1',
         'port': 3306
     }
@@ -94,7 +95,12 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, '/static/'),
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+# 自定义用户表的位置
+USER_MODEL_CLASS = 'model.models.UserInfo'
+ARTICLE_MODEL_CLASS = 'model.models.Article'
